@@ -1,0 +1,88 @@
+.top {
+    height: 40vh;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .budget {
+    position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+  }
+  
+  .title {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+  
+  .budget_value {
+    font-weight: 300;
+    font-size: 46px;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+  }
+  
+  .income,
+  .expense {
+    padding: 12px;
+    text-transform: uppercase;
+  }
+  
+  .income {
+    margin-bottom: 10px;
+    background-color: #28B9B5;
+  }
+  
+  .expense {
+    margin-bottom: 25px;
+    background-color: #FF5049;
+  }
+  
+  .income_text,
+  .expense_text {
+    float: left;
+    font-size: 13px;
+    color: #444;
+    margin-top: 2px;
+  }
+  
+  .income_value,
+  .expense_value {
+    letter-spacing: 1px;
+    float: left;
+  }
+
+  .btn {
+    border: none;
+    
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    background-color: orange;
+    text-align: center;
+  }
+
+  .warning {
+    color: black;
+  }
+
+  .warning:hover{
+    color: white;
+  }
+
+  .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 40px;
+  }
