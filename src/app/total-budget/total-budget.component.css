@@ -16,7 +16,7 @@
   }
   
   .title {
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
     margin-top: 50px;
     margin-bottom: 10px;
@@ -33,7 +33,7 @@
   
   .income,
   .expense {
-    padding: 12px;
+    padding: 6px;
     text-transform: uppercase;
   }
   
@@ -58,7 +58,7 @@
   .income_value,
   .expense_value {
     letter-spacing: 1px;
-    float: left;
+    float: right;
   }
 
   .btn {
