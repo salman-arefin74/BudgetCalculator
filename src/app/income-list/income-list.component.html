@@ -6,10 +6,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <ul class="list-group">
-                <li class="list-group-item savings-list-item">1st Nov 2020 - Salary : 30000</li>
-                <li class="list-group-item savings-list-item">5th Nov 2020 - Bonus : 10000</li>
-                <li class="list-group-item savings-list-item">15th Nov 2020 - Overtime : 5000</li>
+            <ul class="list-group" *ngFor="let item of savingsEntry">
+                <li class="list-group-item savings-list-item">{{item.entryDate}} - {{item.description}} : {{item.amount}}</li>
               </ul> 
         </div>
     </div>

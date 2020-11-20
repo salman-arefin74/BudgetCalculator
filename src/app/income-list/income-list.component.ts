@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { savingsEntry } from '../Model/Entries';
+import { BudgetService } from '../Service/BudgetService';
 
 @Component({
   selector: 'app-income-list',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./income-list.component.css']
 })
 export class IncomeListComponent implements OnInit {
-
-  constructor() { }
+  savingsEntry: savingsEntry[];
+  constructor(private budgetService: BudgetService) { }
 
   ngOnInit(): void {
+    this.savingsEntry = this.budgetService.getSavings();
   }
 
 }
