@@ -7,6 +7,7 @@ import { TotalBudgetComponent } from './total-budget/total-budget.component';
 import { IncomeListComponent } from './income-list/income-list.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NewEntryComponent } from './new-entry/new-entry.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
