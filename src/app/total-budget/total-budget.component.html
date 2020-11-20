@@ -1,7 +1,7 @@
 <div class="top">
     <div class="budget">
       <div class="title">
-        Available Budget: + 30000
+        Available Budget: {{totalBudget}}
       </div>
 
       <!-- <div class="budget_value">+ 2,345.64</div> -->
@@ -9,14 +9,14 @@
       <div class="income clearfix">
         <div class="income_text">Income: &nbsp;</div>
         <div class="right">
-          <div class="income_value">+ 45000</div>
+          <div class="income_value">+ {{totalSavings}}</div>
         </div>
       </div>
 
       <div class="expense clearfix">
         <div class="expense_text">Expense: &nbsp;</div>
         <div class="right clearfix">
-          <div class="expense_value">- 15000</div>
+          <div class="expense_value">- {{totalExpenses}}</div>
         </div>
       </div>
 

@@ -8,6 +8,8 @@ import { IncomeListComponent } from './income-list/income-list.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { NewEntryComponent } from './new-entry/new-entry.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BudgetService } from './Service/BudgetService';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [BudgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

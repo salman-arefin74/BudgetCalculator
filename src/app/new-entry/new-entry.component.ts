@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { espenseEntry, savingsEntry } from '../Model/Entries';
+import { BudgetService } from '../Service/BudgetService';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-new-entry',
   templateUrl: './new-entry.component.html',
@@ -7,9 +10,42 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NewEntryComponent implements OnInit {
   closeResult = '';
-  constructor(private modalService: NgbModal) { }
+  entryDate: Date;
+  type: String;
+  description: string;
+  amount: number;
+
+  dataModel: any = {};
+
+  savingsEntry: savingsEntry;
+  expenseEntry: espenseEntry;
+
+  constructor(private modalService: NgbModal,
+              private budgetService: BudgetService) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(form : NgForm) {
+    if(this.dataModel.type == "Saving")
+    {
+      this.savingsEntry = new savingsEntry();
+      this.savingsEntry.entryDate = this.dataModel.entryDate;
+      this.savingsEntry.description = this.dataModel.description;
+      this.savingsEntry.amount = this.dataModel.amount;
+      
+      this.budgetService.addSavings(this.savingsEntry);
+    }
+    else
+    {
+      this.expenseEntry = new espenseEntry();
+      this.expenseEntry.entryDate = this.dataModel.entryDate;
+      this.expenseEntry.description = this.dataModel.description;
+      this.expenseEntry.amount = this.dataModel.amount;
+      
+      this.budgetService.addExpenses(this.expenseEntry);
+    }
+    
+
   }
 
   open(content) {
