@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { espenseEntry, savingsEntry } from '../Model/Entries';
 import { BudgetService } from '../Service/BudgetService';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-entry',
   templateUrl: './new-entry.component.html',
@@ -19,9 +20,10 @@ export class NewEntryComponent implements OnInit {
 
   savingsEntry: savingsEntry;
   expenseEntry: espenseEntry;
-
+  modalReference: NgbModalRef;
   constructor(private modalService: NgbModal,
-              private budgetService: BudgetService) { }
+              private budgetService: BudgetService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -44,12 +46,21 @@ export class NewEntryComponent implements OnInit {
       
       this.budgetService.addExpenses(this.expenseEntry);
     }
-    
+    this.modalReference.close();
 
   }
 
+  openModal(content){
+    this.modalReference = this.modalService.open(content);
+      this.modalReference.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+  this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
+
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
