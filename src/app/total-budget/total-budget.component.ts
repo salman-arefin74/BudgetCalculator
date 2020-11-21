@@ -12,7 +12,8 @@ export class TotalBudgetComponent implements OnInit {
   totalBudget: number;
   totalSavings: number;
   totalExpenses: number;
-
+  timeLeft: number = 60;
+  interval;
   savingsEntry: savingsEntry[];
   expenseEntry: espenseEntry[];
   constructor(private budgetService: BudgetService) { }
@@ -22,6 +23,20 @@ export class TotalBudgetComponent implements OnInit {
     this.savingsEntry = this.budgetService.getSavings();
     this.expenseEntry = this.budgetService.getExpenses();
     this.getAmount()
+    this.startTotalBudgetTimer();
+  }
+
+  startTotalBudgetTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+        this.savingsEntry = this.budgetService.getSavings();
+        this.expenseEntry = this.budgetService.getExpenses();
+        this.getAmount();
+      } else {
+        this.timeLeft = 60;
+      }
+    },1000)
   }
 
   getAmount(){
@@ -47,20 +62,20 @@ export class TotalBudgetComponent implements OnInit {
     if(localStorage.getItem('savings') === null || localStorage.getItem('savings') == undefined) {
       console.log('No employees Found... Creating...');
       let savingsEntry = [
-        {
-          entryDate:'2020-11-1',
-          description:'Salary',
-          amount: 30000
-        }, 
-        {
-          entryDate:'2020-11-5',
-          description:'Bonus',
-          amount: 10000
-        }, {
-          entryDate:'2020-11-12',
-          description:'Overtime',
-          amount: 5000
-        },
+        // {
+        //   entryDate:'2020-11-1',
+        //   description:'Salary',
+        //   amount: 30000
+        // }, 
+        // {
+        //   entryDate:'2020-11-5',
+        //   description:'Bonus',
+        //   amount: 10000
+        // }, {
+        //   entryDate:'2020-11-12',
+        //   description:'Overtime',
+        //   amount: 5000
+        // },
       ];
 
       localStorage.setItem('savings', JSON.stringify(savingsEntry));
@@ -69,20 +84,20 @@ export class TotalBudgetComponent implements OnInit {
     if(localStorage.getItem('expenses') === null || localStorage.getItem('expenses') == undefined) {
       console.log('No employees Found... Creating...');
       let expenseEntry = [
-        {
-          entryDate:'2020-11-2',
-          description:'Tour',
-          amount: 2000
-        }, 
-        {
-          entryDate:'2020-11-8',
-          description:'Shopping',
-          amount: 10000
-        }, {
-          entryDate:'2020-11-15',
-          description:'Dinner',
-          amount: 3000
-        },
+        // {
+        //   entryDate:'2020-11-2',
+        //   description:'Tour',
+        //   amount: 2000
+        // }, 
+        // {
+        //   entryDate:'2020-11-8',
+        //   description:'Shopping',
+        //   amount: 10000
+        // }, {
+        //   entryDate:'2020-11-15',
+        //   description:'Dinner',
+        //   amount: 3000
+        // },
       ];
 
       localStorage.setItem('expenses', JSON.stringify(expenseEntry));

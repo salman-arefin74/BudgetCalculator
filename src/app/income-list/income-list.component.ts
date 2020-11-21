@@ -16,9 +16,10 @@ export class IncomeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.savingsEntry = this.budgetService.getSavings();
+    this.startSavingsTimer();
   }
 
-  startTimer() {
+  startSavingsTimer() {
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
