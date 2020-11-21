@@ -18,6 +18,7 @@ export class NewEntryComponent implements OnInit {
 
   dataModel: any = {};
 
+
   savingsEntry: savingsEntry;
   expenseEntry: espenseEntry;
   modalReference: NgbModalRef;

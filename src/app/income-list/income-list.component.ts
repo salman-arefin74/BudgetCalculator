@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { timer } from 'rxjs';
 import { savingsEntry } from '../Model/Entries';
 import { BudgetService } from '../Service/BudgetService';
 
@@ -9,10 +10,23 @@ import { BudgetService } from '../Service/BudgetService';
 })
 export class IncomeListComponent implements OnInit {
   savingsEntry: savingsEntry[];
+  timeLeft: number = 60;
+  interval;
   constructor(private budgetService: BudgetService) { }
 
   ngOnInit(): void {
     this.savingsEntry = this.budgetService.getSavings();
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+        this.savingsEntry = this.budgetService.getSavings();
+      } else {
+        this.timeLeft = 60;
+      }
+    },1000)
   }
 
 }

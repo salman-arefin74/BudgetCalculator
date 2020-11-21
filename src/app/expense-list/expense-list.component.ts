@@ -9,10 +9,24 @@ import { BudgetService } from '../Service/BudgetService';
 })
 export class ExpenseListComponent implements OnInit {
   expenseEntry: espenseEntry[];
+  timeLeft: number = 60;
+  interval;
   constructor(private budgetService: BudgetService) { }
 
   ngOnInit(): void {
     this.expenseEntry = this.budgetService.getExpenses();
+    this.startTimer();
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+        this.expenseEntry = this.budgetService.getExpenses();
+      } else {
+        this.timeLeft = 60;
+      }
+    },1000)
   }
 
 }
