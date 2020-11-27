@@ -29,4 +29,10 @@ export class ExpenseListComponent implements OnInit {
     },1000)
   }
 
+  Delete(data){
+    var index = this.expenseEntry.indexOf(data);
+    this.expenseEntry.splice(index, 1);
+    localStorage.setItem('expenses', JSON.stringify(this.expenseEntry));
+  }
+
 }

@@ -30,4 +30,10 @@ export class IncomeListComponent implements OnInit {
     },1000)
   }
 
+  Delete(data){
+    var index = this.savingsEntry.indexOf(data);
+    this.savingsEntry.splice(index, 1);
+    localStorage.setItem('savings', JSON.stringify(this.savingsEntry));
+  }
+
 }

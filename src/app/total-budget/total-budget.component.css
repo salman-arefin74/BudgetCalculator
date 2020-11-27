@@ -39,12 +39,12 @@
   
   .income {
     margin-bottom: 10px;
-    background-color: #44a74b;
+    /* background-color: #44a74b; */
   }
   
   .expense {
     margin-bottom: 25px;
-    background-color: #f5493b;
+    /* background-color: #f5493b; */
   }
   
   .income_text,
